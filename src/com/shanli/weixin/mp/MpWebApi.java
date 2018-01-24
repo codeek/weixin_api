@@ -118,7 +118,7 @@ public class MpWebApi {
 		if (mpApi.config.isOpenMode()) {// 公众平台模式
 			return OpenApi.getInstance().apiSnsOAuth2ComponentAccessToken(mpApi.appid, code);
 		}
-		String path = String.format("/oauth2/access_token?mpApi.appid=%s&secret=%s&code=%s&grant_type=authorization_code",
+		String path = String.format("/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code",
 				mpApi.config.getAppId(), mpApi.config.getAppSecret(), code);
 		String respText = HttpUtil.get(mpApi.config.getApiOAuth(), path);
 		OAuthAccessToken resp = new Gson().fromJson(respText, OAuthAccessToken.class);
